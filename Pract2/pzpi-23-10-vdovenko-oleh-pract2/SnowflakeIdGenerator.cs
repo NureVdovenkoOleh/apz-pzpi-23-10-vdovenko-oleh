@@ -2,7 +2,7 @@ using System;
 
 public class SnowflakeIdGenerator
 {
-    private const long Twepoch = 1288834974657L; // Эпоха Twitter (4 ноября 2010 года)
+    private const long Twepoch = 1288834974657L; // Епоха Twitter (4 листопада 2010 року)
     private const int WorkerIdBits = 10;
     private const int SequenceBits = 12;
     
@@ -21,7 +21,7 @@ public class SnowflakeIdGenerator
     {
         if (workerId > MaxWorkerId || workerId < 0)
         {
-            throw new ArgumentException($"Worker ID должен быть в диапазоне от 0 до {MaxWorkerId}");
+            throw new ArgumentException($"Worker ID повинен бути в діапазоні від 0 до {MaxWorkerId}");
         }
         _workerId = workerId;
     }
@@ -34,7 +34,7 @@ public class SnowflakeIdGenerator
 
             if (timestamp < _lastTimestamp)
             {
-                throw new Exception("Системное время переместилось назад. Генерация невозможна.");
+                throw new Exception("Системний час перемістився назад. Генерація неможлива.");
             }
 
             if (_lastTimestamp == timestamp)
@@ -52,7 +52,7 @@ public class SnowflakeIdGenerator
 
             _lastTimestamp = timestamp;
 
-            // Формирование 64-битного ID с помощью побитовых сдвигов
+            // Формування 64-бітного ID за допомогою побітових зсувів
             return ((timestamp - Twepoch) << TimestampLeftShift) |
                    (_workerId << WorkerIdShift) |
                    _sequence;
